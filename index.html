@@ -110,7 +110,6 @@
       text-align: center;
       color: #333;
       font-size: 1rem;
-      
       line-height: 1.3;
     }
     .invitation-text strong {
@@ -318,127 +317,115 @@
     .navigation-link:hover {
       text-decoration: underline;
     }
-/* 交通資訊部分樣式 */
-.traffic-info {
-  padding: 20px 0;
-  font-size: 0.7rem;
-  color: #666;
-  text-align: left;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-/* 交通資訊的標題樣式 */
-.traffic-info h4 {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.2rem;
-  font-weight: 400;
-  color: #4B2E83;
-  margin: 15px 0 10px;
-}
-
-/* 主列表樣式（A., B., C. 等） */
-.traffic-info > ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-/* 主列表項樣式 */
-.traffic-info > ul > li {
-  position: relative;
-  margin: 8px 0;
-  padding-left: 20px;
-}
-
-/* 主列表項符號（A., B., C. 等） */
-.traffic-info > ul > li:before {
-  content: attr(data-marker);
-  position: absolute;
-  left: 0;
-  color: #ff69b4;
-  font-size: 1rem;
-}
-
-/* 嵌套列表樣式（i., ii., iii. 等） */
-.traffic-info ul ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 5px 0 5px 20px; /* 與主列表項的縮進一致 */
-}
-
-/* 嵌套列表項樣式 */
-.traffic-info ul ul li {
-  position: relative;
-  margin: 5px 0;
-  padding-left: 20px; /* 與主列表項的縮進一致，確保對齊 */
-}
-
-/* 嵌套列表項符號（i., ii., iii. 等） */
-.traffic-info ul ul li:before {
-  content: attr(data-marker);
-  position: absolute;
-  left: 0;
-  color: #ff69b4;
-  font-size: 0.9rem;
-}
-
-/* 更深層嵌套列表（如果有，例如 iv. 下的 i.） */
-.traffic-info ul ul ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 5px 0 5px 20px; /* 保持一致的縮進 */
-}
-
-/* 更深層嵌套列表項 */
-.traffic-info ul ul ul li {
-  position: relative;
-  margin: 5px 0;
-  padding-left: 20px;
-}
-
-/* 更深層嵌套列表項符號 */
-.traffic-info ul ul ul li:before {
-  content: attr(data-marker);
-  position: absolute;
-  left: 0;
-  color: #ff69b4;
-  font-size: 0.9rem;
-}
-
-/* 提示文字樣式 */
-.traffic-info > p {
-  font-style: italic;
-  color: #888;
-  margin-bottom: 15px;
-}
-
-/* 響應式設計 */
-@media (max-width: 600px) {
-  .traffic-info {
-    padding: 15px 10px;
-    font-size: 0.6rem;
-    max-width: 100%;
-  }
-  .traffic-info h4 {
-    font-size: 1rem;
-  }
-  .traffic-info > ul > li {
-    padding-left: 15px;
-  }
-  .traffic-info ul ul {
-    margin-left: 15px;
-  }
-  .traffic-info ul ul li {
-    padding-left: 15px;
-  }
-  .traffic-info ul ul ul {
-    margin-left: 15px;
-  }
-  .traffic-info ul ul ul li {
-    padding-left: 15px;
-  }
-}
+    /* 交通資訊部分樣式 */
+    .traffic-info {
+      padding: 20px 0;
+      font-size: 0.7rem;
+      color: #666;
+      text-align: left;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    /* 交通資訊的標題樣式 */
+    .traffic-info h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: #4B2E83;
+      margin: 15px 0 10px;
+    }
+    /* 主列表樣式（A., B., C. 等） */
+    .traffic-info > ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    /* 主列表項樣式 */
+    .traffic-info > ul > li {
+      position: relative;
+      margin: 8px 0;
+      padding-left: 20px;
+    }
+    /* 主列表項符號（A., B., C. 等） */
+    .traffic-info > ul > li:before {
+      content: attr(data-marker);
+      position: absolute;
+      left: 0;
+      color: #ff69b4;
+      font-size: 1rem;
+    }
+    /* 嵌套列表樣式（i., ii., iii. 等） */
+    .traffic-info ul ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 5px 0 5px 20px; /* 與主列表項的縮進一致 */
+    }
+    /* 嵌套列表項樣式 */
+    .traffic-info ul ul li {
+      position: relative;
+      margin: 5px 0;
+      padding-left: 20px; /* 與主列表項的縮進一致，確保對齊 */
+    }
+    /* 嵌套列表項符號（i., ii., iii. 等） */
+    .traffic-info ul ul li:before {
+      content: attr(data-marker);
+      position: absolute;
+      left: 0;
+      color: #ff69b4;
+      font-size: 0.9rem;
+    }
+    /* 更深層嵌套列表（如果有，例如 iv. 下的 i.） */
+    .traffic-info ul ul ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 5px 0 5px 20px; /* 保持一致的縮進 */
+    }
+    /* 更深層嵌套列表項 */
+    .traffic-info ul ul ul li {
+      position: relative;
+      margin: 5px 0;
+      padding-left: 20px;
+    }
+    /* 更深層嵌套列表項符號 */
+    .traffic-info ul ul ul li:before {
+      content: attr(data-marker);
+      position: absolute;
+      left: 0;
+      color: #ff69b4;
+      font-size: 0.9rem;
+    }
+    /* 提示文字樣式 */
+    .traffic-info > p {
+      font-style: italic;
+      color: #888;
+      margin-bottom: 15px;
+    }
+    /* 響應式設計 */
+    @media (max-width: 600px) {
+      .traffic-info {
+        padding: 15px 10px;
+        font-size: 0.6rem;
+        max-width: 100%;
+      }
+      .traffic-info h4 {
+        font-size: 1rem;
+      }
+      .traffic-info > ul > li {
+        padding-left: 15px;
+      }
+      .traffic-info ul ul {
+        margin-left: 15px;
+      }
+      .traffic-info ul ul li {
+        padding-left: 15px;
+      }
+      .traffic-info ul ul ul {
+        margin-left: 15px;
+      }
+      .traffic-info ul ul ul li {
+        padding-left: 15px;
+      }
+    }
     /* Guestbook */
     .guestbook {
       padding: 30px 20px;
@@ -775,7 +762,6 @@
         <img src="7.JPG" alt="婚禮照片 7">
         <img src="8.JPG" alt="婚禮照片 8">
         <img src="9.JPG" alt="婚禮照片 9">
-
       </div>
     </div>
     
@@ -793,7 +779,7 @@
         </div>
         <button type="submit" id="submit-btn">提交</button>
       </form>
-      <p id="error-message" style="display: none; color: #e74c3c; font-style: italic;">提交失敗，請稍後再試！錯誤:</p>
+      <p id="error-message" style="display: none; color: #e74c3c; font-style: italic;">提交失敗，請稍後再試！</p>
     </section>
     <!-- 提交成功彈窗 -->
     <div class="success-overlay" id="success-overlay">
@@ -811,11 +797,10 @@
       color: #aa8f8f;
       font-size: 0.7rem;
       font-weight: 400;
-      line-height: 1;"><i>- Love knows no distance --</i></h1>
+      line-height: 1;"><i>- Love knows no distance --</i></p>
     </footer>
   </div>
   <script>
-    
     // 背景音樂控制
     const audio = document.getElementById('background-music');
     const muteButton = document.getElementById('mute-button');
@@ -862,55 +847,80 @@
     const form = document.getElementById('rsvp-form');
     const submitBtn = document.getElementById('submit-btn');
     const successOverlay = document.getElementById('success-overlay');
-    const rsvpSection = document.querySelector('.rsvp-section');
     const errorMessage = document.getElementById('error-message');
+    const rsvpInfo = document.querySelector('.rsvp-info');
 
     form.addEventListener('submit', function(event) {
       event.preventDefault();
 
-      const name = document.getElementById('name').value;
-      const attendees = document.getElementById('attendees').value;
+      const name = document.getElementById('name').value.trim();
+      const attendees = parseInt(document.getElementById('attendees').value);
 
-      if (name && attendees) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = '提交中...';
-        const formData = new FormData(form);
+      // 簡單驗證
+      if (!name) {
+        errorMessage.textContent = '請輸入姓名！';
+        errorMessage.style.display = 'block';
+        return;
+      }
+      if (!attendees || attendees < 1) {
+        errorMessage.textContent = '請輸入有效的出席人數！';
+        errorMessage.style.display = 'block';
+        return;
+      }
 
-        fetch(scriptURL, {
-          method: 'POST',
-          body: formData
-        })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-          }
-          return response.json();
-        })
-        .then(data => {
-          console.log('Response from server:', data);
-          if (data.result === 'success') {
-            form.style.display = 'none';
-            document.querySelector('.rsvp-info').style.display = 'none';
-            successOverlay.style.display = 'flex';
-          } else {
-            throw new Error('提交失敗: 伺服器返回非成功結果');
-          }
-        })
-        .catch(error => {
-          console.error('提交失敗:', error);
-          errorMessage.textContent = `提交失敗，請稍後再試！錯誤: ${error.message}`;
+      // 隱藏錯誤訊息
+      errorMessage.style.display = 'none';
+      submitBtn.disabled = true;
+      submitBtn.textContent = '提交中...';
+
+      const formData = new FormData(form);
+
+      fetch(scriptURL, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        console.log('HTTP Status:', response.status);
+        console.log('Content-Type:', response.headers.get('content-type'));
+        // 接受 200 和 302 作為成功
+        if (response.status === 200 || response.status === 302) {
+          return response.text();
+        } else {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+      })
+      .then(text => {
+        console.log('Raw response:', text);
+        // 確保 DOM 元素存在
+        if (form && successOverlay) {
+          form.style.display = 'none';
+          if (rsvpInfo) rsvpInfo.style.display = 'none';
+          successOverlay.style.display = 'flex';
+        } else {
+          console.error('DOM elements not found:', { form, rsvpInfo, successOverlay });
+        }
+      })
+      .catch(error => {
+        console.error('提交失敗:', error);
+        if (errorMessage) {
+          errorMessage.textContent = '提交失敗，請稍後再試！';
           errorMessage.style.display = 'block';
+        }
+        if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.textContent = '提交';
-        });
-      }
+        }
+      });
     });
 
     function closeSuccessMessage() {
-      successOverlay.style.display = 'none';
-      rsvpSection.scrollIntoView({ behavior: 'smooth' });
+      if (successOverlay) {
+        successOverlay.style.display = 'none';
+        document.querySelector('.rsvp-section')?.scrollIntoView({ behavior: 'smooth' });
+      }
     }
 
+    // 倒數計時
     function updateCountdown() {
       const weddingDate = new Date('2025-09-27T14:00:00+08:00');
       const now = new Date();
@@ -939,5 +949,6 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
   </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'93b96c5baf5253fd',t:'MTc0NjU0NDQyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
