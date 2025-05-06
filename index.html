@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kit❤️Maggie的婚禮邀請</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Serif TC', serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f8f8;
+      color: #333;
+      text-align: center;
+      line-height: 1.6;
+      position: relative;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 500px;
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    /* 靜音按鈕 */
+    .mute-button {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
+      background: #4B2E83;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .mute-button:hover {
+      background: #5C3A9E;
+    }
+    /* Header with Names */
+    .name-header {
+      padding: 25px 15px;
+      background: #f9f9f9;
+      border-bottom: 1px solid #eee;
+    }
+    .name-header p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #888;
+      letter-spacing: 1px;
+    }
+    .name-header span {
+      display: inline-block;
+      margin: 0 10px;
+      color: #ff69b4;
+    }
+    /* Cover Photo */
+    .cover-photo {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+    }
+    /* Wedding Message */
+    .wedding-message {
+      padding: 30px 30px 20px;
+      text-align: center;
+    }
+    .wedding-message h1 {
+      font-family: 'CommercialScript BT', serif;
+      font-size: 1.7rem;
+      font-weight: 400;
+      font-style: italic;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .wedding-date {
+      font-family: 'Satsuki Gendai Mincho';
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 5px;
+    }
+    /* Invitation Text */
+    .invitation-text {
+      font-family: 'Satsuki Gendai Mincho';
+      padding: 0 40px 30px;
+      text-align: center;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+    .invitation-text h1{
+      font-family: 'Satsuki Gendai Mincho';
+      font-size: 1.1rem;
+      text-align: center;
+      color: #aa8f8f;
+      font-size: 0.7rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+    .invitation-text p {
+      font-family: 'Satsuki Gendai Mincho';
+      font-size: 1.1rem;
+      text-align: center;
+      color: #333;
+      font-size: 1rem;
+      
+      line-height: 1.3;
+    }
+    .invitation-text strong {
+      font-weight: 500;
+      color: #4B2E83;
+    }
+    .divider {
+      display: block;
+      width: 50px;
+      height: 1px;
+      background: #ddd;
+      margin: 25px auto;
+    }
+
+    .timeline {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 0;
+    }
+    
+    .timeline-item {
+      text-align: center;
+    }
+    
+    .icon-container {
+      width: 50px;
+      height: 50px;
+      display: inline-block;
+      overflow: hidden; /* 隱藏超出部分 */
+      text-align: center;
+      line-height: 50px; /* 垂直居中 */
+    }
+    
+    .icon-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      vertical-align: middle;
+    }
+    
+    .timeline-item p {
+      margin: 5px 0 0;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    /* Calendar Section */
+    .calendar-section {
+      padding: 30px 20px;
+      background: #f9f9f9;
+    }
+    .calendar-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #333;
+      margin-bottom: 15px;
+    }
+    .calendar-subtitle {
+      font-size: 0.9rem;
+      color: #888;
+      margin-bottom: 20px;
+    }
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 5px;
+      max-width: 280px;
+      margin: 0 auto;
+    }
+    .calendar-header {
+      font-size: 0.8rem;
+      color: #888;
+      padding: 5px 0;
+    }
+    .calendar-day {
+      font-size: 0.8rem;
+      color: #333;
+      padding: 5px;
+      line-height: 1.6;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      border-radius: 50%;
+    }
+    .calendar-day.empty {
+      background: transparent;
+    }
+    .calendar-day.highlight {
+      background: #4B2E83;
+      color: #fff;
+      font-weight: 500;
+    }
+    /* Countdown */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px 0 10px;
+    }
+    .countdown div {
+      text-align: center;
+    }
+    .countdown .card {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #333;
+      background: #fff;
+      padding: 5px 8px;
+      min-width: 35px;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .countdown .desc {
+      font-size: 0.7rem;
+      color: #888;
+      margin-top: 5px;
+    }
+    .countdown-message {
+      font-size: 0.9rem;
+      color: #888;
+      margin: 10px 0 0;
+    }
+    /* Photo Gallery */
+    .gallery {
+      padding: 30px 15px;
+      border-top: 1px solid #eee;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 0 auto;
+    }
+    .gallery-grid img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    /* 圖片放大遮罩層 */
+    .image-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .image-overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      border-radius: 5px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      animation: zoomIn 0.3s ease-in-out;
+    }
+    @keyframes zoomIn {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    /* Map Section */
+    .map-section {
+      padding: 30px 20px;
+      background: #f9f9f9;
+      border-top: 1px solid #eee;
+    }
+    .map-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .map-section iframe {
+      width: 100%;
+      height: 200px;
+      border: 0;
+      margin-bottom: 15px;
+      border-radius: 5px;
+    }
+    .map-address {
+      font-size: 0.9rem;
+      color: #555;
+      margin: 15px 0 10px;
+    }
+    .navigation-link {
+      display: inline-block;
+      font-size: 0.9rem;
+      color: #4B2E83;
+      text-decoration: none;
+      margin: 5px 0;
+    }
+    .navigation-link:hover {
+      text-decoration: underline;
+    }
+/* 交通資訊部分樣式 */
+.traffic-info {
+  padding: 20px 0;
+  font-size: 0.7rem;
+  color: #666;
+  text-align: left;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* 交通資訊的標題樣式 */
+.traffic-info h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: #4B2E83;
+  margin: 15px 0 10px;
+}
+
+/* 主列表樣式（A., B., C. 等） */
+.traffic-info > ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* 主列表項樣式 */
+.traffic-info > ul > li {
+  position: relative;
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+/* 主列表項符號（A., B., C. 等） */
+.traffic-info > ul > li:before {
+  content: attr(data-marker);
+  position: absolute;
+  left: 0;
+  color: #ff69b4;
+  font-size: 1rem;
+}
+
+/* 嵌套列表樣式（i., ii., iii. 等） */
+.traffic-info ul ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 5px 0 5px 20px; /* 與主列表項的縮進一致 */
+}
+
+/* 嵌套列表項樣式 */
+.traffic-info ul ul li {
+  position: relative;
+  margin: 5px 0;
+  padding-left: 20px; /* 與主列表項的縮進一致，確保對齊 */
+}
+
+/* 嵌套列表項符號（i., ii., iii. 等） */
+.traffic-info ul ul li:before {
+  content: attr(data-marker);
+  position: absolute;
+  left: 0;
+  color: #ff69b4;
+  font-size: 0.9rem;
+}
+
+/* 更深層嵌套列表（如果有，例如 iv. 下的 i.） */
+.traffic-info ul ul ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 5px 0 5px 20px; /* 保持一致的縮進 */
+}
+
+/* 更深層嵌套列表項 */
+.traffic-info ul ul ul li {
+  position: relative;
+  margin: 5px 0;
+  padding-left: 20px;
+}
+
+/* 更深層嵌套列表項符號 */
+.traffic-info ul ul ul li:before {
+  content: attr(data-marker);
+  position: absolute;
+  left: 0;
+  color: #ff69b4;
+  font-size: 0.9rem;
+}
+
+/* 提示文字樣式 */
+.traffic-info > p {
+  font-style: italic;
+  color: #888;
+  margin-bottom: 15px;
+}
+
+/* 響應式設計 */
+@media (max-width: 600px) {
+  .traffic-info {
+    padding: 15px 10px;
+    font-size: 0.6rem;
+    max-width: 100%;
+  }
+  .traffic-info h4 {
+    font-size: 1rem;
+  }
+  .traffic-info > ul > li {
+    padding-left: 15px;
+  }
+  .traffic-info ul ul {
+    margin-left: 15px;
+  }
+  .traffic-info ul ul li {
+    padding-left: 15px;
+  }
+  .traffic-info ul ul ul {
+    margin-left: 15px;
+  }
+  .traffic-info ul ul ul li {
+    padding-left: 15px;
+  }
+}
+    /* Guestbook */
+    .guestbook {
+      padding: 30px 20px;
+      border-top: 1px solid #eee;
+    }
+    .guestbook h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #333;
+      margin-bottom: 15px;
+    }
+    .guestbook p {
+      font-size: 0.9rem;
+      color: #888;
+    }
+    /* 提交成功彈窗 */
+    .success-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .success-message {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      max-width: 300px;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    .success-message h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: #4B2E83;
+      margin-bottom: 10px;
+    }
+    .success-message p {
+      font-size: 0.9rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .success-message button {
+      background: #4B2E83;
+      color: #fff;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .success-message button:hover {
+      background: #5C3A9E;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    /* 提交中按鈕樣式 */
+    .rsvp-section button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    /* RSVP Section */
+    .rsvp-section {
+      padding: 30px 20px;
+      border-top: 1px solid #eee;
+    }
+    .rsvp-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    .rsvp-section form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 5px;
+    }
+    .form-group label::before {
+      content: '* ';
+      color: #ff69b4;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      font-size: 0.9rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+      background: #f9f9f9;
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: #4B2E83;
+      box-shadow: 0 0 5px rgba(75, 46, 131, 0.3);
+    }
+    .rsvp-section button {
+      background: #4B2E83;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+    }
+    .rsvp-section button:hover {
+      background: #5C3A9E;
+    }
+    .rsvp-info {
+      font-size: 0.8rem;
+      color: #888;
+      margin-top: 15px;
+      line-height: 1.5;
+    }
+    #error-message {
+      display: none;
+      color: #e74c3c;
+      font-style: italic;
+    }
+    /* Footer */
+    footer {
+      padding: 20px;
+      font-size: 0.8rem;
+      color: #888;
+      background: #f9f9f9;
+      border-top: 1px solid #eee;
+    }
+    @media (max-width: 768px) {
+      .name-header { padding: 20px 15px; }
+      .wedding-message { padding: 20px 20px 15px; }
+      .wedding-message h1 { font-size: 1.3rem; }
+      .invitation-text { padding: 0 20px 20px; }
+      .calendar-section, .map-section, .rsvp-section, .guestbook { padding: 20px 15px; }
+      .calendar-section h3, .map-section h3, .rsvp-section h2, .guestbook h2 { font-size: 1.2rem; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .rsvp-section button { font-size: 0.8rem; }
+      .mute-button { width: 35px; height: 35px; font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 靜音按鈕 -->
+  <button class="mute-button" id="mute-button">🔊</button>
+
+  <!-- 背景音樂 -->
+  <audio id="background-music" preload="auto" loop>
+    <source src="background_music.mp3" type="audio/mpeg">
+    您的瀏覽器不支援音頻播放。
+  </audio>
+
+  <!-- 圖片放大遮罩層 -->
+  <div class="image-overlay" id="image-overlay">
+    <img id="enlarged-image" src="" alt="放大圖片">
+  </div>
+
+  <div class="container">
+    <!-- Header with Names -->
+    <div class="name-header">
+      <p>Kit <span>♥</span> Maggie</p>
+    </div>
+    <!-- Cover Photo -->
+    <img src="DF-103--.jpg" alt="婚禮照片" class="cover-photo">
+    <!-- Wedding Message -->
+    <div class="wedding-message">
+      <h1>We are getting married</h1>
+      <p class="wedding-date">27 September 2025</p>
+    </div>
+    <!-- Invitation Text -->
+    <div class="invitation-text">
+      <h1><i>You’re invited to our wedding celebration</i></h1>
+      <h1><i>誠意邀請您出席我們的婚禮</i></h1>
+      <p>蒙上帝的恩典及父母養育深恩</p>
+      <p>我倆謹定於</p>
+      <p><strong>2025年9月27日（星期六）下午2時正</strong></p>
+      <p>假  <strong>基督教香港信義會天恩堂</strong></p>
+      <p>（ 地址：香港葵涌葵盛圍364號 ）</p>
+      <p>舉行婚姻典禮</p>
+      <p>誠邀蒞臨&nbsp;&nbsp;&nbsp;共證婚盟&nbsp;&nbsp;&nbsp;同頌主恩</p>
+      <p>梁文傑　葉嘉琪</p>
+      <p>敬約</p>
+      <span class="divider"></span>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="icon-container">
+            <img src="ring.png" alt="結婚典禮">
+          </div>
+          <p>2:00 PM<br>結婚典禮</p>
+        </div>
+        <div class="timeline-item">
+          <div class="icon-container">
+            <img src="tea1.png" alt="茶會">
+          </div>
+          <p>3:00 PM<br>茶會</p>
+        </div>
+      </div>
+
+      <p style="font-style: italic; color: #888;font-size: 0.8rem;">「愛情，眾水不能熄滅，大水也不能淹沒。」— 雅歌 8:7</p>
+    </div>
+    <!-- Calendar Section -->
+    <div class="calendar-section">
+      <h3>2025.09.27</h3>
+      <p class="calendar-subtitle">下午2時正</p>
+      <div class="calendar-grid">
+        <div class="calendar-header">日</div>
+        <div class="calendar-header">一</div>
+        <div class="calendar-header">二</div>
+        <div class="calendar-header">三</div>
+        <div class="calendar-header">四</div>
+        <div class="calendar-header">五</div>
+        <div class="calendar-header">六</div>
+        <div class="calendar-day empty"></div>
+        <div class="calendar-day">1</div>
+        <div class="calendar-day">2</div>
+        <div class="calendar-day">3</div>
+        <div class="calendar-day">4</div>
+        <div class="calendar-day">5</div>
+        <div class="calendar-day">6</div>
+        <div class="calendar-day">7</div>
+        <div class="calendar-day">8</div>
+        <div class="calendar-day">9</div>
+        <div class="calendar-day">10</div>
+        <div class="calendar-day">11</div>
+        <div class="calendar-day">12</div>
+        <div class="calendar-day">13</div>
+        <div class="calendar-day">14</div>
+        <div class="calendar-day">15</div>
+        <div class="calendar-day">16</div>
+        <div class="calendar-day">17</div>
+        <div class="calendar-day">18</div>
+        <div class="calendar-day">19</div>
+        <div class="calendar-day">20</div>
+        <div class="calendar-day">21</div>
+        <div class="calendar-day">22</div>
+        <div class="calendar-day">23</div>
+        <div class="calendar-day">24</div>
+        <div class="calendar-day">25</div>
+        <div class="calendar-day">26</div>
+        <div class="calendar-day highlight">27</div>
+        <div class="calendar-day">28</div>
+        <div class="calendar-day">29</div>
+        <div class="calendar-day">30</div>
+      </div>
+      <div class="countdown">
+        <div><span class="card" id="days">0</span><div class="desc">days</div></div>
+        <div><span class="card" id="hours">00</span><div class="desc">hours</div></div>
+        <div><span class="card" id="minutes">00</span><div class="desc">minutes</div></div>
+        <div><span class="card" id="seconds">00</span><div class="desc">seconds</div></div>
+      </div>
+      <p class="countdown-message">距離 Kit <span>♥</span> Maggie 的婚禮還有...</p>
+    </div>
+    
+    <!-- Map Section -->
+    <div class="map-section">
+      <h3>地點</h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.71139585243!2d114.12807367556447!3d22.364523679640484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f897472cd901%3A0xd74968c471375804!2z5Z-6552j5pWZ5L-h576p5pyD5aSp5oGp5aCC!5e0!3m2!1szh-TW!2shk!4v1746266903258!5m2!1szh-TW!2shk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <p class="map-address">基督教香港信義會天恩堂（香港葵涌葵盛圍364號）</p>
+      <a href="https://www.google.com/maps/place/%E5%9F%BA%E7%9D%A3%E6%95%99%E4%BF%A1%E7%BE%A9%E6%9C%83%E5%A4%A9%E6%81%A9%E5%A0%82/@22.3645237,114.1280737,17z/data=!3m1!4b1!4m6!3m5!1s0x3403f897472cd901:0xd74968c471375804!8m2!3d22.3645237!4d114.1306486!16s%2Fg%2F11c46k0j3v?hl=zh-TW&entry=ttu&g_ep=EgoyMDI1MDQzMC4xIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D" target="_blank" class="navigation-link">點擊導航至天恩堂</a>
+      
+      <img src="map.jpg" alt="地圖" style="width: 100%; max-width: 400px; margin: 0 auto; border-radius: 5px;">
+      <img src="in.jpg" alt="入口" style="width: 100%; max-width: 400px; margin: 0 auto; border-radius: 5px;">
+    </div>
+    <div class="traffic-info">
+      <h3 style="text-align: center;font-size: 1.1rem;">交通</h3>
+      <p>請留意教堂不設車位，如需要駕駛私家車，請自行於附近地方尋找泊車地點，或參考以下路線乘搭公共交通工具前往場地：</p>
+      <h4>澳門出發的親友適用：</h4>
+      <h3>A. 澳門到香港上環港澳碼頭（渡輪）</h3>
+      <ul>
+        <li>步行約5分鐘從港澳碼頭到港鐵上環站（港島線）</li>
+        <li>乘港島線往中環方向，於中環站轉乘荃灣線往荃灣方向，至葵興站下車</li>
+        <li>下車後於D出口右邊上樓梯即達</li>
+        <!-- 其他列表項 -->
+      </ul>
+      <h3>B.	澳門到港珠澳大橋香港口岸（金巴）</h3>
+      <ul>
+        <li>乘搭城巴B5或龍運巴士B6從香港口岸到東涌站</li>
+        <p>i.	於東涌站乘港鐵東涌線往香港方向，於荔景站轉乘荃灣線往荃灣方向，至葵興站下車</p>
+        <p>ii.	下車後於D出口右邊上樓梯即達</p>
+        <li>乘搭金巴到港珠澳大橋後轉乘A30（40-60分鐘一班）</li>
+        <p>i.	葵興站下車，步行約5分鐘至教堂</p>
+        <li>乘搭金巴到港珠澳大橋後轉乘A31（40-60分鐘一班）</li>
+        <p>i.	葵涌邨站下車，步行約15分鐘至教堂</p>
+        <!-- 其他列表項 -->
+      </ul>
+      <h3>C.	港澳快線直通巴士</h3>
+      <ul>
+        <li>建議於荃灣綠楊新村下車。</li>
+        <p>i.	步行約5分鐘至荃灣地鐵站，乘港鐵荃灣綫往中環方向，至葵興站下車</p>
+        <p>ii.	下車後於D出口右邊上樓梯即達</p>
+        
+        <!-- 其他列表項 -->
+      </ul>
+
+      <h4>香港出發的親友適用：</h4>
+      <ul>
+        <li>親友可乘以下公共交通工具抵達教堂：</li>
+        <li>巴士：38, 47X （於葵康苑站下車）</li>
+        <li>公共小巴：87K, 407</li>
+        <li>地鐵：葵興站下車，於D出口右邊上樓梯即達</li>
+      </ul>
+    </div>    
+
+    <!-- Photo Gallery -->
+    <div class="gallery">
+      <div class="gallery-grid">
+        <img src="1.JPG" alt="婚禮照片 1">
+        <img src="2.JPG" alt="婚禮照片 2">
+        <img src="3.JPG" alt="婚禮照片 3">
+        <img src="4.JPG" alt="婚禮照片 4">
+        <img src="5.JPG" alt="婚禮照片 5">
+        <img src="6.JPG" alt="婚禮照片 6">
+        <img src="7.JPG" alt="婚禮照片 7">
+        <img src="8.JPG" alt="婚禮照片 8">
+        <img src="9.JPG" alt="婚禮照片 9">
+
+      </div>
+    </div>
+    
+    <!-- RSVP Section -->
+    <section class="rsvp-section">
+      <h2>R.S.V.P</h2>
+      <form id="rsvp-form">
+        <div class="form-group">
+          <label for="name">姓名</label>
+          <input type="text" id="name" name="姓名" required placeholder="請輸入您的姓名">
+        </div>
+        <div class="form-group">
+          <label for="attendees">出席人數</label>
+          <input type="number" id="attendees" name="出席人數" required min="1" placeholder="請輸入人數">
+        </div>
+        <button type="submit" id="submit-btn">提交</button>
+      </form>
+      <p id="error-message" style="display: none; color: #e74c3c; font-style: italic;">提交失敗，請稍後再試！錯誤:</p>
+    </section>
+    <!-- 提交成功彈窗 -->
+    <div class="success-overlay" id="success-overlay">
+      <div class="success-message">
+        <h3>感謝您的回覆！</h3>
+        <p>我們已收到您的 RSVP，期待在婚禮上見到您！</p>
+        <button onclick="closeSuccessMessage()">關閉</button>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+      <p style="font-family: 'Satsuki Gendai Mincho';
+      font-size: 1.1rem;
+      text-align: center;
+      color: #aa8f8f;
+      font-size: 0.7rem;
+      font-weight: 400;
+      line-height: 1;"><i>- Love knows no distance --</i></h1>
+    </footer>
+  </div>
+  <script>
+    
+    // 背景音樂控制
+    const audio = document.getElementById('background-music');
+    const muteButton = document.getElementById('mute-button');
+    let hasPlayed = false;
+
+    // 監聽第一次點擊事件播放音樂
+    document.body.addEventListener('click', function playOnClick() {
+      if (!hasPlayed) {
+        audio.play().then(() => {
+          hasPlayed = true;
+          muteButton.style.display = 'flex';
+          document.body.removeEventListener('click', playOnClick);
+        }).catch(error => {
+          console.error('播放失敗:', error);
+        });
+      }
+    });
+
+    // 靜音/取消靜音
+    muteButton.addEventListener('click', function() {
+      const isMuted = audio.muted;
+      audio.muted = !isMuted;
+      muteButton.textContent = isMuted ? '🔊' : '🔇';
+    });
+
+    // 圖片放大功能
+    const galleryImages = document.querySelectorAll('.gallery-grid img');
+    const imageOverlay = document.getElementById('image-overlay');
+    const enlargedImage = document.getElementById('enlarged-image');
+
+    galleryImages.forEach(image => {
+      image.addEventListener('click', function() {
+        enlargedImage.src = this.src;
+        imageOverlay.style.display = 'flex';
+      });
+    });
+
+    imageOverlay.addEventListener('click', function() {
+      imageOverlay.style.display = 'none';
+    });
+
+    // RSVP 表單提交
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyEhwcIOzYUIufBHvEtChRbv7hGecgcECIqnPsfVzvWxfvih2W7zo9RkVlpF-UJCvfn7Q/exec';
+    const form = document.getElementById('rsvp-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const successOverlay = document.getElementById('success-overlay');
+    const rsvpSection = document.querySelector('.rsvp-section');
+    const errorMessage = document.getElementById('error-message');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const attendees = document.getElementById('attendees').value;
+
+      if (name && attendees) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = '提交中...';
+        const formData = new FormData(form);
+
+        fetch(scriptURL, {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          console.log('Response from server:', data);
+          if (data.result === 'success') {
+            form.style.display = 'none';
+            document.querySelector('.rsvp-info').style.display = 'none';
+            successOverlay.style.display = 'flex';
+          } else {
+            throw new Error('提交失敗: 伺服器返回非成功結果');
+          }
+        })
+        .catch(error => {
+          console.error('提交失敗:', error);
+          errorMessage.textContent = `提交失敗，請稍後再試！錯誤: ${error.message}`;
+          errorMessage.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = '提交';
+        });
+      }
+    });
+
+    function closeSuccessMessage() {
+      successOverlay.style.display = 'none';
+      rsvpSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function updateCountdown() {
+      const weddingDate = new Date('2025-09-27T14:00:00+08:00');
+      const now = new Date();
+      const diff = weddingDate - now;
+
+      if (diff < 0) {
+        document.getElementById('days').textContent = '0';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        document.querySelector('.countdown-message').textContent = '今天是我們的婚禮！';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('days').textContent = days;
+      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
