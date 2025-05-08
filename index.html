@@ -4,18 +4,40 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kit❤️Maggie的婚禮邀請</title>
-  <!-- 預加載關鍵字體 -->  <!-- Google Fonts：僅加載 Noto Serif JP 字重 600 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
   <style>
     /* 字體定義 */
+
+    @font-face {
+      font-family: 'Noto Serif JP';
+      font-weight: 200;
+      font-display: swap;
+      unicode-range: U+4E00-9FFF;
+      src: url('Noto_Serif_JP/static/NotoSerifJP-ExtraLight.ttf') format('truetype');
+    }
+    
+    @font-face {
+      font-family: 'Noto Serif JP';
+      font-weight: 400;
+      font-display: swap;
+      unicode-range: U+4E00-9FFF;
+      src: url('Noto_Serif_JP/static/NotoSerifJP-Regular.ttf') format('truetype');
+    }
+    
     @font-face {
       font-family: 'Noto Serif JP';
       font-weight: 600;
       font-display: swap;
       unicode-range: U+4E00-9FFF;
-      src: url('https://fonts.gstatic.com/s/notoserifjp/v8/xn7mYHsLmcscScy5zq2Y7TAN.woff2') format('woff2');
+      src: url('Noto_Serif_JP/static/NotoSerifJP-SemiBold.ttf') format('truetype');
+    }
+    
+    
+    @font-face {
+      font-family: 'Noto Serif JP';
+      font-weight: 900;
+      font-display: swap;
+      unicode-range: U+4E00-9FFF;
+      src: url('/Noto_Serif_JP/static/NotoSerifJP-Black .ttf') format('truetype');
     }
 
     /* 全局樣式 */
@@ -148,7 +170,7 @@
       font-family: inherit;
     }
     .invitation-text strong {
-      font-weight: 500;
+      font-weight: 600;
       color: #4B2E83;
     }
     .divider {
@@ -243,7 +265,7 @@
     .calendar-day.highlight {
       background: #4B2E83;
       color: #fff;
-      font-weight: 500;
+      font-weight: 600;
     }
 
     /* Countdown */
@@ -259,7 +281,7 @@
     .countdown .card {
       display: block;
       font-size: 1.1rem;
-      font-weight: 500;
+      font-weight: 600;
       color: #333;
       background: #fff;
       padding: 5px 8px;
@@ -330,7 +352,7 @@
       right: 30px;
       color: #fff;
       font-size: 40px;
-      font-weight: bold;
+      font-weight: 600;
       cursor: pointer;
     }
     .close:hover,
