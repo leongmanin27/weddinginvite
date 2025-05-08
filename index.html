@@ -281,52 +281,65 @@
       font-family: inherit;
     }
 
-    /* Photo Gallery */
     .gallery {
-      padding: 30px 15px;
-      border-top: 1px solid #eee;
+      padding: 20px 0;
+      max-width:450px;
+      margin: 0 auto;
     }
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin: 0 auto;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+
     }
     .gallery-grid img {
       width: 100%;
-      aspect-ratio: 1/1;
+      height: auto;
       object-fit: cover;
       border-radius: 5px;
       cursor: pointer;
+      transition: transform 0.3s ease;
     }
-
-    /* 圖片放大遮罩層 */
-    .image-overlay {
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+    /* 模態框樣式 */
+    .modal {
       display: none;
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.9);
       z-index: 1000;
-      align-items: center;
-      justify-content: center;
     }
-    .image-overlay img {
+    .modal-content {
+      margin: 50px auto;
       max-width: 90%;
-      max-height: 90%;
-      object-fit: contain;
-      border-radius: 5px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-      animation: zoomIn 0.3s ease-in-out;
+      max-height: 90vh;
     }
-    @keyframes zoomIn {
-      from { transform: scale(0.5); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      max-height: 90vh;
     }
-
-    /* Map Section */
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .close:hover,
+    .close:focus {
+      color: #ccc;
+      text-decoration: none;
+      cursor: pointer;
+    }
+        /* Map Section */
     .map-section {
       padding: 30px 20px;
       background: #f9f9f9;
@@ -707,7 +720,7 @@
     </div>
 
     <!-- Cover Photo -->
-    <img src="DF-103--.jpg" alt="婚禮照片" class="cover-photo">
+    <img src="cover/wedding-cover.jpg" alt="婚禮照片" class="cover-photo">
 
     <!-- Wedding Message -->
     <div class="wedding-message">
@@ -892,20 +905,25 @@
     </div>
 
     <!-- Photo Gallery -->
-    <div class="gallery">
-      <div class="gallery-grid">
-        <img src="1.JPG" alt="婚禮照片 1">
-        <img src="2.JPG" alt="婚禮照片 2">
-        <img src="3.JPG" alt="婚禮照片 3">
-        <img src="4.JPG" alt="婚禮照片 4">
-        <img src="5.JPG" alt="婚禮照片 5">
-        <img src="6.JPG" alt="婚禮照片 6">
-        <img src="7.JPG" alt="婚禮照片 7">
-        <img src="8.JPG" alt="婚禮照片 8">
-        <img src="9.JPG" alt="婚禮照片 9">
-      </div>
+  <div class="gallery">
+    <div class="gallery-grid">
+      <img src="webp/1.webp" alt="婚禮照片 1" onclick="openModal('pic/1.jpg')">
+      <img src="webp/2.webp" alt="婚禮照片 2" onclick="openModal('pic/2.jpg')">
+      <img src="webp/3.webp" alt="婚禮照片 3" onclick="openModal('pic/3.jpg')">
+      <img src="webp/4.webp" alt="婚禮照片 4" onclick="openModal('pic/4.jpg')">
+      <img src="webp/5.webp" alt="婚禮照片 5" onclick="openModal('pic/5.jpg')">
+      <img src="webp/6.webp" alt="婚禮照片 6" onclick="openModal('pic/6.jpg')">
+      <img src="webp/7.webp" alt="婚禮照片 7" onclick="openModal('pic/7.jpg')">
+      <img src="webp/8.webp" alt="婚禮照片 8" onclick="openModal('pic/8.jpg')">
     </div>
-
+  </div>
+  <!-- 模態框 -->
+  <div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+      <img id="modalImage" src="" alt="放大圖片">
+    </div>
+  </div>
     <!-- Footer -->
     <footer>
       <p lang="en"><i>- Love knows no distance --</i></p>
@@ -936,21 +954,23 @@
       muteButton.textContent = isMuted ? '🔊' : '🔇';
     });
 
-    // 圖片放大功能
-    const galleryImages = document.querySelectorAll('.gallery-grid img');
-    const imageOverlay = document.getElementById('image-overlay');
-    const enlargedImage = document.getElementById('enlarged-image');
+    function openModal(src) {
+      document.getElementById("myModal").style.display = "block";
+      document.getElementById("modalImage").src = src;
+    }
 
-    galleryImages.forEach(image => {
-      image.addEventListener('click', function() {
-        enlargedImage.src = this.src;
-        imageOverlay.style.display = 'flex';
-      });
-    });
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+      document.getElementById("modalImage").src = "";
+    }
 
-    imageOverlay.addEventListener('click', function() {
-      imageOverlay.style.display = 'none';
-    });
+    // 點擊模態框外部關閉
+    window.onclick = function(event) {
+      const modal = document.getElementById("myModal");
+      if (event.target == modal) {
+        closeModal();
+      }
+    }
 
     // RSVP 表單提交
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyEhwcIOzYUIufBHvEtChRbv7hGecgcECIqnPsfVzvWxfvih2W7zo9RkVlpF-UJCvfn7Q/exec';
