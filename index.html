@@ -4,10 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kit❤️Maggie的婚禮邀請</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <!-- 預加載關鍵字體 -->
+  <link rel="preload" as="font" href="https://fonts.gstatic.com/s/notoserifjp/v8/xn7mYHsLmcscScy5zq2Y7TAN.woff2" type="font/woff2" crossorigin="anonymous">
+  <!-- Google Fonts：僅加載 Noto Serif JP 字重 600 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600&display=swap" rel="stylesheet">
   <style>
+    /* 字體定義 */
+    @font-face {
+      font-family: 'Noto Serif JP';
+      font-weight: 600;
+      font-display: swap;
+      unicode-range: U+4E00-9FFF;
+      src: url('https://fonts.gstatic.com/s/notoserifjp/v8/xn7mYHsLmcscScy5zq2Y7TAN.woff2') format('woff2');
+    }
+
+    /* 全局樣式 */
     body {
-      font-family: 'Times New Roman', 'Noto Serif JP', 'Noto Serif TC', serif;
       margin: 0;
       padding: 0;
       background: #f8f8f8;
@@ -17,12 +29,32 @@
       position: relative;
       overflow-x: hidden;
     }
+
+    /* 中文字體：Noto Serif JP 字重 600 */
+    :lang(zh-HK), :lang(zh) {
+      font-family: 'Noto Serif JP', 'PingFang SC', serif;
+      font-weight: 600;
+    }
+
+    /* 英文和數字：Times New Roman */
+    :lang(en), [lang="en"], .english, .numeric {
+      font-family: 'Times New Roman', Georgia, serif;
+      font-weight: 400;
+    }
+
+    /* 確保數字使用 Times New Roman */
+    .numeric {
+      font-family: 'Times New Roman', Georgia, serif;
+    }
+
     .container {
       max-width: 500px;
       margin: 0 auto;
       background: #fff;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      font-family: inherit;
     }
+
     /* 靜音按鈕 */
     .mute-button {
       position: fixed;
@@ -45,6 +77,7 @@
     .mute-button:hover {
       background: #5C3A9E;
     }
+
     /* Header with Names */
     .name-header {
       padding: 25px 15px;
@@ -56,60 +89,63 @@
       font-size: 0.9rem;
       color: #888;
       letter-spacing: 1px;
-      font-family: 'Times New Roman', 'Noto Serif JP', serif;
+      font-family: inherit;
     }
     .name-header span {
       display: inline-block;
       margin: 0 10px;
       color: #ff69b4;
     }
+
     /* Cover Photo */
     .cover-photo {
       width: 100%;
       max-height: 400px;
       object-fit: cover;
     }
+
     /* Wedding Message */
     .wedding-message {
       padding: 30px 30px 20px;
       text-align: center;
     }
     .wedding-message h1 {
-      font-family: 'Times New Roman', serif;
       font-size: 1.7rem;
       font-weight: 400;
       font-style: italic;
       color: #333;
       margin-bottom: 10px;
+      font-family: 'Times New Roman', serif; /* 英文標題使用 Times New Roman */
     }
     .wedding-date {
-      font-family: 'Noto Serif JP', serif;
       font-size: 1rem;
       color: #333;
       margin-bottom: 5px;
+      font-family: inherit;
     }
+
     /* Invitation Text */
     .invitation-text {
-      font-family: 'Noto Serif JP', serif;
       padding: 0 40px 30px;
       text-align: center;
       font-size: 0.9rem;
       line-height: 1.8;
+      font-family: inherit;
     }
     .invitation-text h1 {
-      font-family: 'Noto Serif JP', serif;
       font-size: 0.7rem;
       text-align: center;
       color: #aa8f8f;
       font-weight: 400;
       line-height: 1;
+      font-family: inherit;
     }
     .invitation-text p {
-      font-family: 'Noto Serif JP', serif;
       font-size: 1rem;
       text-align: center;
       color: #333;
       line-height: 1.3;
+      font-family: inherit;
     }
     .invitation-text strong {
       font-weight: 500;
@@ -122,6 +158,7 @@
       background: #ddd;
       margin: 25px auto;
     }
+
     .timeline {
       display: flex;
       justify-content: center;
@@ -150,38 +187,41 @@
       margin: 5px 0 0;
       font-size: 0.9rem;
       color: #888;
-      font-family: 'Times New Roman', serif;
+      font-family: inherit;
     }
+
     /* Calendar Section */
     .calendar-section {
       padding: 30px 20px;
       background: #f9f9f9;
+      font-family: inherit;
     }
     .calendar-section h3 {
-      font-family: 'Times New Roman', serif;
       font-size: 1.4rem;
       font-weight: 400;
       color: #333;
       margin-bottom: 15px;
+      font-family: 'Times New Roman', serif; /* 數字標題使用 Times New Roman */
     }
     .calendar-subtitle {
       font-size: 0.9rem;
       color: #888;
       margin-bottom: 20px;
-      font-family: 'Noto Serif JP', serif;
+      font-family: inherit;
     }
     .calendar-grid {
       display: grid;
       grid-template-columns: repeat(7, 1fr);
       gap: 5px;
       max-width: 280px;
- coleccion     margin: 0 auto;
+      margin: 0 auto;
     }
     .calendar-header {
       font-size: 0.8rem;
       color: #888;
       padding: 5px 0;
       font-family: 'Noto Serif JP', serif;
+      font-weight: 600;
     }
     .calendar-day {
       font-size: 0.8rem;
@@ -205,8 +245,9 @@
       color: #fff;
       font-weight: 500;
     }
+
     /* Countdown */
-    besz     .countdown {
+    .countdown {
       display: flex;
       justify-content: center;
       gap: 10px;
@@ -237,8 +278,9 @@
       font-size: 0.9rem;
       color: #888;
       margin: 10px 0 0;
-      font-family: 'Noto Serif JP', serif;
+      font-family: inherit;
     }
+
     /* Photo Gallery */
     .gallery {
       padding: 30px 15px;
@@ -257,6 +299,7 @@
       border-radius: 5px;
       cursor: pointer;
     }
+
     /* 圖片放大遮罩層 */
     .image-overlay {
       display: none;
@@ -282,18 +325,21 @@
       from { transform: scale(0.5); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
+
     /* Map Section */
     .map-section {
       padding: 30px 20px;
       background: #f9f9f9;
       border-top: 1px solid #eee;
+      font-family: inherit;
     }
     .map-section h3 {
-      font-family: 'Times New Roman', serif;
       font-size: 1.4rem;
       font-weight: 400;
       color: #333;
       margin-bottom: 20px;
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 600;
     }
     .map-section iframe {
       width: 100%;
@@ -306,7 +352,7 @@
       font-size: 0.9rem;
       color: #555;
       margin: 15px 0 10px;
-      font-family: 'Noto Serif JP', serif;
+      font-family: inherit;
     }
     .navigation-link {
       display: inline-block;
@@ -314,12 +360,13 @@
       color: #4B2E83;
       text-decoration: none;
       margin: 5px 0;
-      font-family: 'Times New Roman', serif;
+      font-family: inherit;
     }
     .navigation-link:hover {
       text-decoration: underline;
     }
-    /* 交通資訊部分樣式 */
+
+    /* 交通資訊 */
     .traffic-info {
       padding: 20px 0;
       font-size: 0.7rem;
@@ -327,29 +374,26 @@
       text-align: left;
       max-width: 400px;
       margin: 0 auto;
-      font-family: 'Noto Serif JP', serif;
+      font-family: inherit;
     }
-    /* 交通資訊的標題樣式 */
     .traffic-info h4 {
-      font-family: 'Times New Roman', serif;
       font-size: 1.2rem;
       font-weight: 400;
       color: #4B2E83;
       margin: 15px 0 10px;
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 600;
     }
-    /* 主列表樣式（A., B., C. 等） */
     .traffic-info > ul {
       list-style-type: none;
       padding: 0;
       margin: 0;
     }
-    /* 主列表項樣式 */
     .traffic-info > ul > li {
       position: relative;
       margin: 8px 0;
       padding-left: 20px;
     }
-    /* 主列表項符號（A., B., C. 等） */
     .traffic-info > ul > li:before {
       content: attr(data-marker);
       position: absolute;
@@ -358,19 +402,16 @@
       font-size: 1rem;
       font-family: 'Times New Roman', serif;
     }
-    /* 嵌套列表樣式（i., ii., iii. 等） */
     .traffic-info ul ul {
       list-style-type: none;
       padding: 0;
       margin: 5px 0 5px 20px;
     }
-    /* 嵌套列表項樣式 */
     .traffic-info ul ul li {
       position: relative;
       margin: 5px 0;
       padding-left: 20px;
     }
-    /* 嵌套列表項符號（i., ii., iii. 等） */
     .traffic-info ul ul li:before {
       content: attr(data-marker);
       position: absolute;
@@ -379,19 +420,16 @@
       font-size: 0.9rem;
       font-family: 'Times New Roman', serif;
     }
-    /* 更深層嵌套列表（如果有，例如 iv. 下的 i.） */
     .traffic-info ul ul ul {
       list-style-type: none;
       padding: 0;
       margin: 5px 0 5px 20px;
     }
-    /* 更深層嵌套列表項 */
     .traffic-info ul ul ul li {
       position: relative;
       margin: 5px 0;
       padding-left: 20px;
     }
-    /* 更深層嵌套列表項符號 */
     .traffic-info ul ul ul li:before {
       content: attr(data-marker);
       position: absolute;
@@ -400,15 +438,15 @@
       font-size: 0.9rem;
       font-family: 'Times New Roman', serif;
     }
-    /* 提示文字樣式 */
     .traffic-info > p {
       font-style: italic;
       color: #888;
       margin-bottom: 15px;
     }
+
     /* 響應式設計 */
     @media (max-width: 600px) {
-      .traffic-info {
+      .traffic-info {
         padding: 15px 10px;
         font-size: 0.6rem;
         max-width: 100%;
@@ -432,23 +470,86 @@
         padding-left: 15px;
       }
     }
-    /* Guestbook */
-    .guestbook {
+
+    /* RSVP Section */
+    .rsvp-section {
       padding: 30px 20px;
       border-top: 1px solid #eee;
+      font-family: inherit;
     }
-    .guestbook h2 {
-      font-family: 'Times New Roman', serif;
+    .rsvp-section h2 {
       font-size: 1.4rem;
       font-weight: 400;
       color: #333;
-      margin-bottom: 15px;
-    }
-    .guestbook p {
-      font-size: 0.9rem;
-      color: #888;
+      margin-bottom: 20px;
       font-family: 'Times New Roman', serif;
     }
+    .rsvp-section form {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 5px;
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 600;
+    }
+    .form-group label::before {
+      content: '* ';
+      color: #ff69b4;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      font-size: 0.9rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+      background: #f9f9f9;
+      font-family: inherit;
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: #4B2E83;
+      box-shadow: 0 0 5px rgba(75, 46, 131, 0.3);
+    }
+    .rsvp-section button {
+      background: #4B2E83;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.3s;
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 600;
+    }
+    .rsvp-section button:hover {
+      background: #5C3A9E;
+    }
+    .rsvp-info {
+      font-size: 0.8rem;
+      color: #888;
+      margin-top: 15px;
+      line-height: 1.5;
+      font-family: inherit;
+    }
+    #error-message {
+      display: none;
+      color: #e74c3c;
+      font-style: italic;
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 600;
+    }
+
     /* 提交成功彈窗 */
     .success-overlay {
       display: none;
@@ -472,16 +573,18 @@
       animation: fadeIn 0.3s ease-in-out;
     }
     .success-message h3 {
-      font-family: 'Times New Roman', serif;
       font-size: 1.3rem;
       color: #4B2E83;
       margin-bottom: 10px;
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 600;
     }
     .success-message p {
       font-size: 0.9rem;
       color: #333;
       margin-bottom: 20px;
       font-family: 'Noto Serif JP', serif;
+      font-weight: 600;
     }
     .success-message button {
       background: #4B2E83;
@@ -491,7 +594,8 @@
       border-radius: 5px;
       font-size: 0.9rem;
       cursor: pointer;
-      font-family: 'Times New Roman', serif;
+      font-family: 'Noto Serif JP', serif;
+      font-weight: 600;
     }
     .success-message button:hover {
       background: #5C3A9E;
@@ -500,111 +604,43 @@
       from { opacity: 0; transform: scale(0.9); }
       to { opacity: 1; transform: scale(1); }
     }
+
     /* 提交中按鈕樣式 */
     .rsvp-section button:disabled {
       background: #ccc;
       cursor: not-allowed;
     }
-    /* RSVP Section */
-    .rsvp-section {
-      padding: 30px 20px;
-      border-top: 1px solid #eee;
-    }
-    .rsvp-section h2 {
-      font-family: 'Times New Roman', serif;
-      font-size: 1.4rem;
-      font-weight: 400;
-      color: #333;
-      margin-bottom: 20px;
-    }
-    .rsvp-section form {
-      max-width: 400px;
-      margin: 0 auto;
-    }
-    .form-group {
-      margin-bottom: 20px;
-      text-align: left;
-    }
-    .form-group label {
-      display: block;
-      font-size: 0.9rem;
-      color: #555;
-      margin-bottom: 5px;
-      font-family: 'Noto Serif JP', serif;
-    }
-    .form-group label::before {
-      content: '* ';
-      color: #ff69b4;
-    }
-    .form-group input {
-      width: 100%;
-      padding: 10px;
-      font-size: 0.9rem;
-      border: 1px solid #ddd;
-      border-radius: 5px;
-      box-sizing: border-box;
-      background: #f9f9f9;
-      font-family: 'Times New Roman', 'Noto Serif JP', serif;
-    }
-    .form-group input:focus {
-      outline: none;
-      border-color: #4B2E83;
-      box-shadow: 0 0 5px rgba(75, 46, 131, 0.3);
-    }
-    .rsvp-section button {
-      background: #4B2E83;
-      color: #fff;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      width: 100%;
-      transition: background 0.3s;
-      font-family: 'Times New Roman', serif;
-    }
-    .rsvp-section button:hover {
-      background: #5C3A9E;
-    }
-    .rsvp-info {
-      font-size: 0.8rem;
-      color: #888;
-      margin-top: 15px;
-      line-height: 1.5;
-      font-family: 'Noto Serif JP', serif;
-    }
-    #error-message {
-      display: none;
-      color: #e74c3c;
-      font-style: italic;
-      font-family: 'Noto Serif JP', serif;
-    }
+
     /* Footer */
     footer {
       padding: 20px;
       font-size: 0.8rem;
       color: #888;
-      background: #f9f9 wsp     f9;
+      background: #f9f9f9;
       border-top: 1px solid #eee;
     }
     footer p {
-      font-family: 'Times New Roman', serif;
       font-size: 0.7rem;
       text-align: center;
       color: #aa8f8f;
       font-weight: 400;
       line-height: 1;
+      font-family: 'Times New Roman', serif; /* 英文 footer 使用 Times New Roman */
     }
+
+    /* 響應式設計 */
     @media (max-width: 768px) {
       .name-header { padding: 20px 15px; }
       .wedding-message { padding: 20px 20px 15px; }
       .wedding-message h1 { font-size: 1.3rem; }
       .invitation-text { padding: 0 20px 20px; }
-      .calendar-section, .map-section, .rsvp-section, .guestbook { padding: 20px 15px; }
-      .calendar-section h3, .map-section h3, .rsvp-section h2, .guestbook h2 { font-size: 1.2rem; }
+      .calendar-section, .map-section, .rsvp-section, .gallery { padding: 20px 15px; }
+      .calendar-section h3, .map-section h3, .rsvp-section h2 { font-size: 1.2rem; }
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .rsvp-section button { font-size: 0.8rem; }
       .mute-button { width: 35px; height: 35px; font-size: 1rem; }
+      :lang(zh-HK) { font-size: 16px; }
+      .english, .numeric { font-size: 16px; }
     }
   </style>
 </head>
@@ -626,164 +662,172 @@
   <div class="container">
     <!-- Header with Names -->
     <div class="name-header">
-      <p>Kit <span>♥</span> Maggie</p>
+      <p><span class="english">Kit</span> <span>♥</span> <span class="english">Maggie</span></p>
     </div>
+
     <!-- Cover Photo -->
     <img src="DF-103--.jpg" alt="婚禮照片" class="cover-photo">
+
     <!-- Wedding Message -->
     <div class="wedding-message">
-      <h1>We are getting married</h1>
-      <p class="wedding-date">27 September 2025</p>
+      <h1 lang="en">We are getting married</h1>
+      <p class="wedding-date"><span class="numeric">27</span> <span class="english">September</span> <span class="numeric">2025</span></p>
     </div>
+
     <!-- Invitation Text -->
     <div class="invitation-text">
-      <h1><i>「愛情，眾水不能熄滅，大水也不能淹沒。」— 雅歌 8:7</i></h1>
-      <p>蒙上帝的恩典及父母養育深恩</p>
-      <p>我倆謹定於</p>
-      <p><strong>2025年9月27日（星期六）下午2時正</strong></p>
-      <p>假  <strong>基督教香港信義會天恩堂</strong></p>
-      <p>（ 地址：香港葵涌葵盛圍364號 ）</p>
-      <p>舉行結婚典禮</p>
-      <p>誠邀蒞臨</p>
-      <p>共證婚盟　同頌主恩</p>
-      <p>梁文傑　葉嘉琪</p>
-      <p>敬約</p>
+      <h1 lang="zh-HK"><i>「愛情，眾水不能熄滅，大水也不能淹沒。」— 雅歌 8:7</i></h1>
+      <p lang="zh-HK">蒙上帝的恩典及父母養育深恩</p>
+      <p lang="zh-HK">我倆謹定於</p>
+      <p><strong><span lang="zh-HK">2025年9月27日（星期六）下午</span><span class="numeric">2</span><span lang="zh-HK">時正</span></strong></p>
+      <p lang="zh-HK">假 <strong>基督教香港信義會天恩堂</strong></p>
+      <p lang="zh-HK">（ 地址：香港葵涌葵盛圍<span class="numeric">364</span>號 ）</p>
+      <p lang="zh-HK">舉行結婚典禮</p>
+      <p lang="zh-HK">誠邀蒞臨</p>
+      <p lang="zh-HK">共證婚盟　同頌主恩</p>
+      <p lang="zh-HK">梁文傑　葉嘉琪</p>
+      <p lang="zh-HK">敬約</p>
       <span class="divider"></span>
       <div class="timeline">
         <div class="timeline-item">
           <div class="icon-container">
             <img src="ring.png" alt="結婚典禮">
           </div>
-          <p>2:00 PM<br>結婚典禮</p>
+          <p><span class="numeric">2:00 PM</span><br><span lang="zh-HK">結婚典禮</span></p>
         </div>
         <div class="timeline-item">
           <div class="icon-container">
             <img src="tea1.png" alt="茶會">
           </div>
-          <p>3:00 PM<br>茶會</p>
+          <p><span class="numeric">3:00 PM</span><br><span lang="zh-HK">茶會</span></p>
         </div>
       </div>
     </div>
+
     <!-- Calendar Section -->
     <div class="calendar-section">
-      <h3>2025.09.27</h3> 
-      <p class="calendar-subtitle">下午2時正</p>
+      <h3><span class="numeric">2025.09.27</span></h3> 
+      <p class="calendar-subtitle" lang="zh-HK">下午<span class="numeric">2</span>時正</p>
       <div class="calendar-grid">
-        <div class="calendar-header">日</div>
-        <div class="calendar-header">一</div>
-        <div class="calendar-header">二</div>
-        <div class="calendar-header">三</div>
-        <div class="calendar-header">四</div>
-        <div class="calendar-header">五</div>
-        <div class="calendar-header">六</div>
+        <div class="calendar-header" lang="zh-HK">日</div>
+        <div class="calendar-header" lang="zh-HK">一</div>
+        <div class="calendar-header" lang="zh-HK">二</div>
+        <div class="calendar-header" lang="zh-HK">三</div>
+        <div class="calendar-header" lang="zh-HK">四</div>
+        <div class="calendar-header" lang="zh-HK">五</div>
+        <div class="calendar-header" lang="zh-HK">六</div>
         <div class="calendar-day empty"></div>
-        <div class="calendar-day">1</div>
-        <div class="calendar-day">2</div>
-        <div class="calendar-day">3</div>
-        <div class="calendar-day">4</div>
-        <div class="calendar-day">5</div>
-        <div class="calendar-day">6</div>
-        <div class="calendar-day">7</div>
-        <div class="calendar-day">8</div>
-        <div class="calendar-day">9</div>
-        <div class="calendar-day">10</div>
-        <div class="calendar-day">11</div>
-        <div class="calendar-day">12</div>
-        <div class="calendar-day">13</div>
-        <div class="calendar-day">14</div>
-        <div class="calendar-day">15</div>
-        <div class="calendar-day">16</div>
-        <div class="calendar-day">17</div>
-        <div class="calendar-day">18</div>
-        <div class="calendar-day">19</div>
-        <div class="calendar-day">20</div>
-        <div class="calendar-day">21</div>
-        <div class="calendar-day">22</div>
-        <div class="calendar-day">23</div>
-        <div class="calendar-day">24</div>
-        <div class="calendar-day">25</div>
-        <div class="calendar-day">26</div>
-        <div class="calendar-day highlight">27</div>
-        <div class="calendar-day">28</div>
-        <div class="calendar-day">29</div>
-        <div class="calendar-day">30</div>
+        <div class="calendar-day numeric">1</div>
+        <div class="calendar-day numeric">2</div>
+        <div class="calendar-day numeric">3</div>
+        <div class="calendar-day numeric">4</div>
+        <div class="calendar-day numeric">5</div>
+        <div class="calendar-day numeric">6</div>
+        <div class="calendar-day numeric">7</div>
+        <div class="calendar-day numeric">8</div>
+        <div class="calendar-day numeric">9</div>
+        <div class="calendar-day numeric">10</div>
+        <div class="calendar-day numeric">11</div>
+        <div class="calendar-day numeric">12</div>
+        <div class="calendar-day numeric">13</div>
+        <div class="calendar-day numeric">14</div>
+        <div class="calendar-day numeric">15</div>
+        <div class="calendar-day numeric">16</div>
+        <div class="calendar-day numeric">17</div>
+        <div class="calendar-day numeric">18</div>
+        <div class="calendar-day numeric">19</div>
+        <div class="calendar-day numeric">20</div>
+        <div class="calendar-day numeric">21</div>
+        <div class="calendar-day numeric">22</div>
+        <div class="calendar-day numeric">23</div>
+        <div class="calendar-day numeric">24</div>
+        <div class="calendar-day numeric">25</div>
+        <div class="calendar-day numeric">26</div>
+        <div class="calendar-day highlight numeric">27</div>
+        <div class="calendar-day numeric">28</div>
+        <div class="calendar-day numeric">29</div>
+        <div class="calendar-day numeric">30</div>
       </div>
-      <p class="countdown-message">距離 Kit <span>♥</span> Maggie 的婚禮還有...</p>
+      <p class="countdown-message" lang="zh-HK">距離 <span class="english">Kit</span> <span>♥</span> <span class="english">Maggie</span> 的婚禮還有...</p>
       <div class="countdown">
-        <div><span class="card" id="days">0</span><div class="desc">days</div></div>
-        <div><span class="card" id="hours">00</span><div class="desc">hours</div></div>
-        <div><span class="card" id="minutes">00</span><div class="desc">minutes</div></div>
-        <div><span class="card" id="seconds">00</span><div class="desc">seconds</div></div>
+        <div><span class="card numeric" id="days">0</span><div class="desc english">days</div></div>
+        <div><span class="card numeric" id="hours">00</span><div class="desc english">hours</div></div>
+        <div><span class="card numeric" id="minutes">00</span><div class="desc english">minutes</div></div>
+        <div><span class="card numeric" id="seconds">00</span><div class="desc english">seconds</div></div>
       </div>
     </div>
+
     <!-- Map Section -->
     <div class="map-section">
-      <h3>地點</h3>
+      <h3 lang="zh-HK">地點</h3>
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3689.71139585243!2d114.12807367556447!3d22.364523679640484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3403f897472cd901%3A0xd74968c471375804!2z5Z-6552j5pWZ5L-h576p5pyD5aSp5oGp5aCC!5e0!3m2!1szh-TW!2shk!4v1746266903258!5m2!1szh-TW!2shk" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      <p class="map-address">基督教香港信義會天恩堂（香港葵涌葵盛圍364號）</p>
-      <a href="https://www.google.com/maps/place/%E5%9F%BA%E7%9D%A3%E6%95%99%E4%BF%A1%E7%BE%A9%E6%9C%83%E5%A4%A9%E6%81%A9%E5%A0%82/@22.3645237,114.1280737,17z/data=!3m1!4b1!4m6!3m5!1s0x3403f897472cd901:0xd74968c471375804!8m2!3d22.3645237!4d114.1306486!16s%2Fg%2F11c46k0j3v?hl=zh-TW&entry=ttu&g_ep=EgoyMDI1MDQzMC4xIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D" target="_blank" class="navigation-link">點擊導航至天恩堂</a>
+      <p class="map-address" lang="zh-HK">基督教香港信義會天恩堂（香港葵涌葵盛圍<span class="numeric">364</span>號）</p>
+      <a href="https://www.google.com/maps/dir/22.212727,113.550123/%E9%A6%99%E6%B8%AF%E8%91%B5%E6%B6%8C%E8%91%B5%E7%9B%9B%E5%9C%8D%E5%9F%BA%E7%9D%A3%E6%95%99%E4%BF%A1%E7%BE%A9%E6%9C%83%E5%A4%A9%E6%81%A9%E5%A0%82/@22.3641979,114.1301705,19z/data=!4m9!4m8!1m1!4e1!1m5!1m1!1s0x3403f897472cd901:0xd74968c471375804!2m2!1d114.1306486!2d22.3645237?entry=ttu&g_ep=EgoyMDI1MDUwNS4wIKXMDSoJLDEwMjExNDU1SAFQAw%3D%3D" class="navigation-link" target="_blank" lang="zh-HK">點擊導航至天恩堂</a>
       <img src="map.jpg" alt="地圖" style="width: 100%; max-width: 400px; margin: 0 auto; border-radius: 5px;">
       <img src="in.jpg" alt="入口" style="width: 100%; max-width: 400px; margin: 0 auto; border-radius: 5px;">
     </div>
+
+    <!-- Traffic Info -->
     <div class="traffic-info">
-      <h3 style="text-align: center;font-size: 1.1rem;">交通</h3>
-      <p>由於教堂不設車位，如駕駛私家車前往，需自行尋找泊車地點，為此帶來不便，敬請諒解。如若乘搭公共交通工具前往場地，可參考以下路線：</p>
-      <h4>澳門出發的親友適用：</h4>
-      <h3>A. 澳門到香港上環港澳碼頭（渡輪）</h3>
+      <h3 style="text-align: center; font-size: 1.1rem;" lang="zh-HK">交通</h3>
+      <p lang="zh-HK">由於教堂不設車位，如駕駛私家車前往，需自行尋找泊車地點，為此帶來不便，敬請諒解。如若乘搭公共交通工具前往場地，可參考以下路線：</p>
+      <h4 lang="zh-HK">澳門出發的親友適用：</h4>
+      <h3 lang="zh-HK">A. 澳門到香港上環港澳碼頭（渡輪）測試字體</h3>
       <ul>
-        <li>步行約5分鐘從港澳碼頭到港鐵上環站（港島線）</li>
-        <li>乘港島線往中環方向，於中環站轉乘荃灣線往荃灣方向，至葵興站下車</li>
-        <li>下車後於D出口右邊上樓梯即達</li>
-      </ul>
-      <h3>B. 澳門到港珠澳大橋香港口岸（金巴）</h3>
+        <li lang="zh-HK">　　步行約<span class="numeric">5</span>分鐘從港澳碼頭到港鐵上環站（港島線）</li>
+        <li lang="zh-HK">　　乘港島線往中環方向，於中環站轉乘荃灣線往荃灣方向，至葵興站下車</li>
+        <li lang="zh-HK">　　下車後於<span class="english">D</span>出口右邊上樓梯即達</li>
+      <h3 lang="zh-HK">B. 澳門到港珠澳大橋香港口岸（金巴）</h3>
       <ul>
-        <li>乘搭城巴B5或龍運巴士B6從香港口岸到東涌站</li>
-        <p>　　　i. 於東涌站乘港鐵東涌線往香港方向，於荔景站轉乘荃灣線往荃灣方向，</p>
-        <p>　　　　至葵興站下車</p>
-        <p>　　　ii. 下車後於D出口右邊上樓梯即達</p>
-        <li>乘搭金巴到港珠澳大橋後轉乘A30（40-60分鐘一班）</li>
-        <p>　　　i. 葵興站下車，步行約5分鐘至教堂</p>
-        <li>乘搭金巴到港珠澳大橋後轉乘A31（40-60分鐘一班）</li>
-        <p>　　　i. 葵涌邨站下車，步行約15分鐘至教堂</p>
+        <li lang="zh-HK">乘搭城巴<span class="english">B5</span>或龍運巴士<span class="english">B6</span>從香港口岸到東涌站</li>
+        <li lang="zh-HK">　i.於東涌站乘港鐵東涌線往香港方向，於荔景站轉乘荃灣線往荃灣方向，至葵興站下車</li>
+        <li lang="zh-HK">　ii.下車後於<span class="english">D</span>出口右邊上樓梯即達</li>
+        <li lang="zh-HK">乘搭金巴到港珠澳大橋後轉乘<span class="english">A30</span>（<span class="numeric">40-60</span>分鐘一班） </li>
+        <li lang="zh-HK">　i.葵興站下車，步行約<span class="numeric">5</span>分鐘至教堂</li>
+        <li lang="zh-HK">乘搭金巴到港珠澳大橋後轉乘<span class="english">A31</span>（<span class="numeric">40-60</span>分鐘一班） </li>
+        <li lang="zh-HK">　ii.葵涌邨站下車，步行約<span class="numeric">15</span>分鐘至教堂</li>
       </ul>
-      <h3>C. 港澳快線直通巴士</h3>
+      <h3 lang="zh-HK">C. 港澳快線直通巴士</h3>
       <ul>
-        <li>建議於荃灣綠楊新村下車。</li>
-        <p>　　　i. 步行約5分鐘至荃灣地鐵站，乘港鐵荃灣綫往中環方向，至葵興站下車</p>
-        <p>　　　ii. 下車後於D出口右邊上樓梯即達</p>
+        <li lang="zh-HK">建議於荃灣綠楊新村下車。</li>
+        <li lang="zh-HK">　i.步行約<span class="numeric">5</span>分鐘至荃灣地鐵站，乘港鐵荃灣綫往中環方向，<br>　　至葵興站下車</li>
+        <li lang="zh-HK">　ii.下車後於<span class="english">D</span>出口右邊上樓梯即達</li>
       </ul>
-      <h4>香港出發的親友適用：</h4>
+      <h4 lang="zh-HK">香港出發的親友適用：</h4>
       <ul>
-        <li>親友可乘以下公共交通工具抵達教堂：</li>
-        <li>巴士：38, 47X （於葵康苑站下車）</li>
-        <li>公共小巴：87K, 407</li>
-        <li>地鐵：葵興站下車，於D出口右邊上樓梯即達</li>
+        <li lang="zh-HK">親友可乘以下公共交通工具抵達教堂：</li>
+        <li lang="zh-HK">　巴士：<span class="numeric">38</span>, <span class="numeric">47X</span> （於葵康苑站下車）</li>
+        <li lang="zh-HK">　公共小巴：<span class="numeric">87K</span>, <span class="numeric">407</span></li>
+        <li lang="zh-HK">　地鐵：葵興站下車，於<span class="english">D</span>出口右邊上樓梯即達</li>
       </ul>
-    </div>    
+    </div>
+
     <!-- RSVP Section -->
     <section class="rsvp-section">
-      <h2>R.S.V.P</h2>
+      <h2 lang="en">R.S.V.P</h2>
       <form id="rsvp-form">
         <div class="form-group">
-          <label for="name">姓名</label>
-          <input type="text" id="name" name="姓名" required placeholder="請輸入您的姓名">
+          <label for="name" lang="zh-HK">姓名</label>
+          <input type="text" id="name" name="姓名" required placeholder="請輸入您的姓名" lang="zh-HK">
         </div>
         <div class="form-group">
-          <label for="attendees">出席人數</label>
-          <input type="number" id="attendees" name="出席人數" required min="1" placeholder="請輸入人數">
+          <label for="attendees" lang="zh-HK">出席人數</label>
+          <input type="number" id="attendees" name="出席人數" required min="1" placeholder="請輸入人數" class="numeric">
         </div>
-        <button type="submit" id="submit-btn">提交</button>
+        <button type="submit" id="submit-btn" lang="zh-HK">提交</button>
       </form>
-      <p id="error-message" style="display: none; color: #e74c3c; font-style: italic;">提交失敗，請稍後再試！</p>
+      <p id="error-message" lang="zh-HK">提交失敗，請稍後再試！</p>
     </section>
+
     <!-- 提交成功彈窗 -->
     <div class="success-overlay" id="success-overlay">
       <div class="success-message">
-        <h3>感謝您的回覆！</h3>
-        <p>我們已收到您的 RSVP，期待在婚禮上見到您！</p>
-        <button onclick="closeSuccessMessage()">關閉</button>
+        <h3 lang="zh-HK">感謝您的回覆！</h3>
+        <p lang="zh-HK">我們已收到您的 RSVP，期待在婚禮上見到您！</p>
+        <button onclick="closeSuccessMessage()" lang="zh-HK">關閉</button>
       </div>
     </div>
+
     <!-- Photo Gallery -->
     <div class="gallery">
       <div class="gallery-grid">
@@ -798,18 +842,19 @@
         <img src="9.JPG" alt="婚禮照片 9">
       </div>
     </div>
+
     <!-- Footer -->
     <footer>
-      <p><i>- Love knows no distance --</i></p>
+      <p lang="en"><i>- Love knows no distance --</i></p>
     </footer>
   </div>
+
   <script>
     // 背景音樂控制
     const audio = document.getElementById('background-music');
     const muteButton = document.getElementById('mute-button');
     let hasPlayed = false;
 
-    // 監聽第一次點擊事件播放音樂
     document.body.addEventListener('click', function playOnClick() {
       if (!hasPlayed) {
         audio.play().then(() => {
@@ -822,7 +867,6 @@
       }
     });
 
-    // 靜音/取消靜音
     muteButton.addEventListener('click', function() {
       const isMuted = audio.muted;
       audio.muted = !isMuted;
@@ -859,7 +903,6 @@
       const name = document.getElementById('name').value.trim();
       const attendees = parseInt(document.getElementById('attendees').value);
 
-      // 簡單驗證
       if (!name) {
         errorMessage.textContent = '請輸入姓名！';
         errorMessage.style.display = 'block';
@@ -871,7 +914,6 @@
         return;
       }
 
-      // 隱藏錯誤訊息
       errorMessage.style.display = 'none';
       submitBtn.disabled = true;
       submitBtn.textContent = '提交中...';
@@ -883,9 +925,6 @@
         body: formData
       })
       .then(response => {
-        console.log('HTTP Status:', response.status);
-        console.log('Content-Type:', response.headers.get('content-type'));
-        // 接受 200 和 302 作為成功
         if (response.status === 200 || response.status === 302) {
           return response.text();
         } else {
@@ -893,8 +932,6 @@
         }
       })
       .then(text => {
-        console.log('Raw response:', text);
-        // 確保 DOM 元素存在
         if (form && successOverlay) {
           form.style.display = 'none';
           if (rsvpInfo) rsvpInfo.style.display = 'none';
