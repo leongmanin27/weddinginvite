@@ -369,20 +369,26 @@
     /* 交通資訊 */
     .traffic-info {
       padding: 20px 0;
-      font-size: 0.7rem;
-      color: #666;
-      text-align: left;
-      max-width: 400px;
-      margin: 0 auto;
-      font-family: inherit;
+        font-size: 0.7rem;
+        color: #666;
+        text-align: left;
+        max-width: 400px;
+        margin: 0 auto;
+        font-family: inherit;
     }
     .traffic-info h4 {
       font-size: 1.2rem;
-      font-weight: 400;
-      color: #4B2E83;
-      margin: 15px 0 10px;
-      font-family: 'Noto Serif JP', serif;
-      font-weight: 600;
+        font-weight: 400;
+        color: #4B2E83;
+        margin: 15px 0 10px;
+        font-family: 'Noto Serif JP', serif;
+        font-weight: 600;
+    }
+    .traffic-info > p {
+      padding-left: 40px;
+      font-style: italic;
+      color: #888;
+      margin-bottom: 15px;
     }
     .traffic-info > ul {
       list-style-type: none;
@@ -390,63 +396,77 @@
       margin: 0;
     }
     .traffic-info > ul > li {
+      
       position: relative;
       margin: 8px 0;
       padding-left: 20px;
+      text-indent: 0px;
+      line-height: 1.6;
     }
-    .traffic-info > ul > li:before {
-      content: attr(data-marker);
+    .traffic-info > ul > li::before {
+      content: none;
       position: absolute;
       left: 0;
       color: #ff69b4;
       font-size: 1rem;
       font-family: 'Times New Roman', serif;
+      width: 10px;
+      text-align: center;
+    }
+    /* 當 <li> 包含嵌套 <ul> 時，不顯示父層的圓點 */
+    .traffic-info > ul > li:has(ul)::before {
+      content: none;
     }
     .traffic-info ul ul {
       list-style-type: none;
       padding: 0;
-      margin: 5px 0 5px 20px;
+      margin-left: 40px;
     }
     .traffic-info ul ul li {
       position: relative;
       margin: 5px 0;
-      padding-left: 20px;
+      padding-left: 0px;
+      text-indent: -20px;
+      line-height: 1.6;
     }
-    .traffic-info ul ul li:before {
-      content: attr(data-marker);
+    .traffic-info ul ul li::before {
+      content: "•";
       position: absolute;
-      left: 0;
+      left: -20px;
       color: #ff69b4;
       font-size: 0.9rem;
       font-family: 'Times New Roman', serif;
+      width: 10px;
+      text-align: center;
+    }
+    /* 當嵌套 <li> 包含更深層 <ul> 時，也不顯示圓點 */
+    .traffic-info ul ul li:has(ul)::before {
+      content: none;
     }
     .traffic-info ul ul ul {
       list-style-type: none;
       padding: 0;
-      margin: 5px 0 5px 20px;
+      margin-left: 40px;
     }
     .traffic-info ul ul ul li {
       position: relative;
       margin: 5px 0;
       padding-left: 20px;
+      text-indent: -10px;
+      line-height: 1.6;
     }
-    .traffic-info ul ul ul li:before {
-      content: attr(data-marker);
+    .traffic-info ul ul ul li::before {
+      content: "•";
       position: absolute;
       left: 0;
       color: #ff69b4;
       font-size: 0.9rem;
       font-family: 'Times New Roman', serif;
+      width: 10px;
+      text-align: center;
     }
-    .traffic-info > p {
-      font-style: italic;
-      color: #888;
-      margin-bottom: 15px;
-    }
-    .traffic-numeric {
-      font-family: 'Times New Roman', Georgia, serif;
-    }
-    /* 英文和數字：Times New Roman */
+
+     /* 英文和數字：Times New Roman */
     :lang(en), [lang="en"], .traffic-english, .traffic-numeric {
       font-family: 'Times New Roman', Georgia, serif;
       color: #000;
@@ -793,31 +813,53 @@
       <h4 lang="zh-HK">澳門出發的親友適用：</h4>
       <h3 lang="zh-HK">A. 澳門到香港上環港澳碼頭（渡輪）</h3>
       <ul>
-        <li lang="zh-HK">　　步行約<span class="numeric">5</span>分鐘從港澳碼頭到港鐵上環站（港島線）</li>
-        <li lang="zh-HK">　　乘港島線往中環方向，於中環站轉乘荃灣線往荃灣方向，至<h7>葵興站</h7>下車</li>
-        <li lang="zh-HK">　　下車後於<span class="traffic-english">D</span>出口右邊上樓梯即達</li>
+        <li lang="zh-HK">步行約<span class="numeric">5</span>分鐘從港澳碼頭到港鐵上環站（港島線）</li>
+        <li lang="zh-HK">乘港島線往中環方向，於中環站轉乘荃灣線往荃灣方向，至<h7>葵興站</h7>下車</li>
+        <li lang="zh-HK">下車後於<span class="traffic-english">D</span><h7>出口</h7>右邊上樓梯即達</li>
+      </ul>
       <h3 lang="zh-HK">B. 澳門到港珠澳大橋香港口岸（金巴）</h3>
       <ul>
-        <li lang="zh-HK">乘搭城巴<span class="traffic-english">B5</span>或龍運巴士<span class="traffic-english">B6</span>從香港口岸到東涌站</li>
-        <li lang="zh-HK">　i.於東涌站乘港鐵東涌線往香港方向，荔景站轉乘荃灣線往荃灣方向，至<h7>葵興站</h7>下車</li>
-        <li lang="zh-HK">　ii.下車後於<span class="english">D</span>出口右邊上樓梯即達</li>
-        <li lang="zh-HK">乘搭金巴到港珠澳大橋後轉乘<span class="traffic-english">A30</span>（<span class="numeric">40-60</span>分鐘一班） </li>
-        <li lang="zh-HK">　i.<h7>葵興站</h7>下車，步行約<span class="numeric">5</span>分鐘至教堂</li>
-        <li lang="zh-HK">乘搭金巴到港珠澳大橋後轉乘<span class="traffic-english">A31</span>（<span class="numeric">40-60</span>分鐘一班） </li>
-        <li lang="zh-HK">　ii.<h7>葵涌邨站</h7>下車，步行約<span class="numeric">15</span>分鐘至教堂</li>
+        <li lang="zh-HK">乘搭城巴<span class="traffic-english">B5</span>或龍運巴士<span class="traffic-english">B6</span>從香港口岸到<h7>東涌站</h7></li>
+        <li lang="zh-HK">
+          <ul lang="zh-HK">
+            <li lang="zh-HK">於東涌站乘港鐵東涌線往香港方向，<h7>荔景站</h7>轉乘荃灣線往荃灣方向，至<h7>葵興站</h7>下車</li>
+            <li lang="zh-HK">下車後於<span class="traffic-english">D</span><h7>出口</h7>右邊上樓梯即達</li>
+          </ul>
+        </li>
+        <li lang="zh-HK">乘搭金巴到港珠澳大橋後轉乘<span class="traffic-english">A30</span>（<span class="numeric">40-60</span>分鐘一班）</li>
+        <li lang="zh-HK">
+          <ul lang="zh-HK">
+            <li lang="zh-HK"><h7>葵興站</h7>下車，步行約<span class="numeric">5</span>分鐘至教堂</li>
+          </ul>
+        </li>
+        <li lang="zh-HK">乘搭金巴到港珠澳大橋後轉乘<span class="traffic-english">A31</span>（<span class="numeric">40-60</span>分鐘一班）</li>
+        <li lang="zh-HK">
+          <ul lang="zh-HK">
+            <li lang="zh-HK"><h7>葵涌邨站</h7>下車，步行約<span class="numeric">15</span>分鐘至教堂</li>
+          </ul>
+        </li>
       </ul>
       <h3 lang="zh-HK">C. 港澳快線直通巴士</h3>
       <ul>
-        <li lang="zh-HK">建議於荃灣綠楊新村下車。</li>
-        <li lang="zh-HK">　i.步行約<span class="numeric">5</span>分鐘至荃灣地鐵站，乘港鐵荃灣綫往中環方向，至<h7>葵興站</h7>下車</li>
-        <li lang="zh-HK">　ii.下車後於<span class="traffic-english">D</span>出口右邊上樓梯即達</li>
+        
+        <li lang="zh-HK">
+          <ul lang="zh-HK">
+            <li lang="zh-HK">建議於<h7>荃灣綠楊新村</h7>下車</li>
+            <li lang="zh-HK">步行約<span class="numeric">5</span>分鐘至荃灣地鐵站，乘港鐵荃灣綫往中環方向，至<h7>葵興站</h7>下車</li>
+            <li lang="zh-HK">下車後於<span class="traffic-english">D</span><h7>出口</h7>右邊上樓梯即達</li>
+          </ul>
+        </li>
       </ul>
       <h4 lang="zh-HK">香港出發的親友適用：</h4>
       <ul>
-        <li lang="zh-HK">親友可乘以下公共交通工具抵達教堂：</li>
-        <li lang="zh-HK">　巴士：<span class="traffic-numeric">38</span>, <span class="traffic-numeric">47X</span> （於葵康苑站下車）</li>
-        <li lang="zh-HK">　公共小巴：<span class="traffic-numeric">87K</span>, <span class="traffic-numeric">407</span></li>
-        <li lang="zh-HK">　地鐵：葵興站下車，於<span class="traffic-english">D</span>出口右邊上樓梯即達</li>
+        <li lang="zh-HK">親友可乘以下公共交通工具抵達教堂</li>
+        <li lang="zh-HK">
+          <ul lang="zh-HK">
+            <li lang="zh-HK">巴士：<span class="traffic-numeric">38</span>, <span class="traffic-numeric">47X</span>（於葵康苑站下車）</li>
+            <li lang="zh-HK">公共小巴：<span class="traffic-numeric">87K</span>, <span class="traffic-numeric">407</span></li>
+            <li lang="zh-HK">地鐵：<h7>葵興站</h7>下車，於<span class="traffic-english">D</span><h7>出口</h7>右邊上樓梯即達</li>
+          </ul>
+        </li>
       </ul>
     </div>
 
