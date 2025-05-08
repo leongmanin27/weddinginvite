@@ -7,7 +7,7 @@
   <!-- 預加載關鍵字體 -->
   <link rel="preload" as="font" href="https://fonts.gstatic.com/s/notoserifjp/v8/xn7mYHsLmcscScy5zq2Y7TAN.woff2" type="font/woff2" crossorigin="anonymous">
   <!-- Google Fonts：僅加載 Noto Serif JP 字重 600 -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600@900&display=swap" rel="stylesheet">
   <style>
     /* 字體定義 */
     @font-face {
@@ -94,7 +94,7 @@
     .name-header span {
       display: inline-block;
       margin: 0 10px;
-      color: #ff69b4;
+      color: #000000;
     }
 
     /* Cover Photo */
@@ -443,20 +443,17 @@
       color: #888;
       margin-bottom: 15px;
     }
-    .traffic-numeric {
-      font-family: 'Times New Roman', Georgia, serif;
-    }
-    /* 英文和數字：Times New Roman */
+        /* 英文和數字：Times New Roman */
     :lang(en), [lang="en"], .traffic-english, .traffic-numeric {
       font-family: 'Times New Roman', Georgia, serif;
       color: #000;
-      font-weight: 700;
+      font-weight: bolder;
     }
 
     .traffic-info h7 {
       font-family: 'Noto Serif JP', 'PingFang SC', serif;
-      font-size :1rem;
-      font-weight: 800;
+     
+      font-weight: 900;
       color: #000000;
     }
 
@@ -817,7 +814,7 @@
         <li lang="zh-HK">親友可乘以下公共交通工具抵達教堂：</li>
         <li lang="zh-HK">　巴士：<span class="traffic-numeric">38</span>, <span class="traffic-numeric">47X</span> （於葵康苑站下車）</li>
         <li lang="zh-HK">　公共小巴：<span class="traffic-numeric">87K</span>, <span class="traffic-numeric">407</span></li>
-        <li lang="zh-HK">　地鐵：葵興站下車，於<span class="traffic-english">D</span>出口右邊上樓梯即達</li>
+        <li lang="zh-HK">　地鐵：<h7>葵興站</h7>下車，於<span class="traffic-english">D</span>出口右邊上樓梯即達</li>
       </ul>
     </div>
 
