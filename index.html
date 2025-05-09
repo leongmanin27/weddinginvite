@@ -950,27 +950,63 @@
 
   <script>
     // 背景音樂控制
-    const audio = document.getElementById('background-music');
-    const muteButton = document.getElementById('mute-button');
-    let hasPlayed = false;
+const audio = document.getElementById('background-music');
+const muteButton = document.getElementById('mute-button');
+let hasPlayed = false;
 
-    document.body.addEventListener('click', function playOnClick() {
-      if (!hasPlayed) {
-        audio.play().then(() => {
-          hasPlayed = true;
-          muteButton.style.display = 'flex';
-          document.body.removeEventListener('click', playOnClick);
-        }).catch(error => {
-          console.error('播放失敗:', error);
-        });
-      }
+document.body.addEventListener('click', function playOnClick() {
+  if (!hasPlayed) {
+    audio.play().then(() => {
+      hasPlayed = true;
+      muteButton.style.display = 'flex';
+      document.body.removeEventListener('click', playOnClick);
+    }).catch(error => {
+      console.error('播放失敗:', error);
     });
+  }
+});
 
-    muteButton.addEventListener('click', function() {
-      const isMuted = audio.muted;
-      audio.muted = !isMuted;
-      muteButton.textContent = isMuted ? '🔊' : '🔇';
+muteButton.addEventListener('click', function() {
+  const isMuted = audio.muted;
+  audio.muted = !isMuted;
+  muteButton.textContent = isMuted ? '🔊' : '🔇';
+});
+
+// 暫停音樂的函數
+function pauseAudio() {
+  if (!audio.paused && !audio.muted) {
+    audio.pause();
+  }
+}
+
+// 恢復音樂的函數
+function resumeAudio() {
+  if (hasPlayed && !audio.muted && audio.paused) {
+    audio.play().catch(error => {
+      console.error('恢復播放失敗:', error);
     });
+  }
+}
+
+// 監聽 visibilitychange 事件
+document.addEventListener('visibilitychange', function() {
+  if (document.hidden) {
+    pauseAudio();
+  } else {
+    resumeAudio();
+  }
+});
+
+// 監聽 pagehide 事件（針對 iOS 優化）
+window.addEventListener('pagehide', function() {
+  pauseAudio();
+});
+
+// 監聽 pageshow 事件（恢復播放）
+window.addEventListener('pageshow', function() {
+  resumeAudio();
+});
+
 
     function openModal(src) {
       document.getElementById("myModal").style.display = "block";
